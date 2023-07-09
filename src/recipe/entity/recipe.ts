@@ -1,3 +1,4 @@
+import { User } from 'src/auth/entity/user';
 import {
   Column,
   Entity,
@@ -6,7 +7,6 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Unit } from '../dto/recipe.dto';
-import { User } from 'src/auth/entity/user';
 
 @Entity({ name: 'recipe' })
 export class Recipe {
@@ -40,8 +40,6 @@ export class Ingredient {
   @Column({ type: 'integer' })
   quantity: number;
 
-  @ManyToOne(() => Recipe, (recipe) => recipe.ingredients, {
-    onDelete: 'CASCADE',
-  })
+  @ManyToOne(() => Recipe, (recipe) => recipe.ingredients)
   recipe: Recipe;
 }

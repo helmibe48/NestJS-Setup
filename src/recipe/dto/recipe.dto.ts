@@ -23,20 +23,20 @@ export enum Unit {
 
 export class RecipeDto {
   @IsNotEmpty()
-  @IsString()
   @MinLength(10)
+  @IsString()
   description: string;
 
   @IsArray()
   @ArrayMinSize(1)
-  @ValidateNested()
-  @Type(() => IgredientDto)
-  ingredients: IgredientDto[];
+  @ValidateNested({ each: true })
+  @Type(() => IngredientDto)
+  ingredients: IngredientDto[];
 }
 
-export class IgredientDto {
-  @IsArray()
-  @ArrayMinSize(1)
+export class IngredientDto {
+  @IsNotEmpty()
+  @IsString()
   name: string;
 
   @IsNotEmpty()
