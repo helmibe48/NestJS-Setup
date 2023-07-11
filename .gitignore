@@ -37,3 +37,5 @@ lerna-debug.log*
 # Added by my own
 .env
 docker-compose.yml
+.dockerignore
+Dockerfile
